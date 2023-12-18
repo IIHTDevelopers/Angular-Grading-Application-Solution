@@ -1,0 +1,39 @@
+<h1>Student Grades</h1>
+
+<div>
+    <h3>Add Student</h3>
+    <form (submit)="addStudent()">
+        <input type="text" name="name" placeholder="Student Name" [(ngModel)]="newStudent.name">
+        <input type="text" name="grade" placeholder="Grade" [(ngModel)]="newStudent.grade">
+        <button type="submit">Add Student</button>
+    </form>
+</div>
+
+<div>
+    <h3>Search Students</h3>
+    <input type="text" placeholder="Search Students" [(ngModel)]="searchKeyword">
+</div>
+
+<div>
+    <h3>List of Students</h3>
+    <ul>
+        <li *ngFor="let student of filteredStudents">
+            <div>
+                <h4>{{ student.name }}</h4>
+                <p>Grade: {{ student.grade }}</p>
+                <button (click)="editStudent(student)">Edit</button>
+                <button (click)="deleteStudent(student)">Delete</button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="isEditing">
+    <h3>Edit Student</h3>
+    <form (submit)="saveEditedStudent()">
+        <input type="text" name="name" placeholder="Student Name" [(ngModel)]="editedStudent.name">
+        <input type="text" name="grade" placeholder="Grade" [(ngModel)]="editedStudent.grade">
+        <button type="submit">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+    </form>
+</div>
