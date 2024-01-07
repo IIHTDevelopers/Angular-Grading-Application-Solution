@@ -18,8 +18,6 @@ export class GradingComponent {
   isEditing = false;
   searchKeyword = '';
 
-  constructor() { }
-
   addStudent(): void {
     this.newStudent.id = this.students.length + 1;
     this.students.push({ ...this.newStudent });
